@@ -1,14 +1,12 @@
-{% extends "padre.html" %}
-
-{% load static %}
-
-{% block titulo %}
-Atletas
-{% endblock %}
-
 {% block contenido %}
 
-<h1>Bienvenido a una pagina de prueba</h1>
-<p>Todo este contenido se ha heredado todo desde la plantilla padre</p>
+<h1>Los atletas cargados hasta el momento son:</h1>
+
+{% for atleta in Atleta %}
+
+    {{Atleta}}
+    <br>
+
+{% endfor %}
 
 {% endblock %}
