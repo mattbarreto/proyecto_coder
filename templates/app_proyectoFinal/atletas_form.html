@@ -8,19 +8,15 @@
 </head>
 <body>
     
+{% if formulario.errors %}
+    <p style="color: red">{{formulario.errors}}</p>
+{% endif %}
+
 <form action="" method="POST">{% csrf_token %}
 
-    <p> Nombre <input type="text" name="nombre"></p>
-
-    <p> Apellido <input type="text" name="apellido"></p>
-
-    <p> Edad <input type="number" step="0.01" name="edad"></p>
-
-    <p> Altura <input type="number" name="altura"></p>
-
-    <p> Peso <input type="number" name="peso"></p>
-
-    <p> E-mail <input type="email" name="email"></p>
+    <table>
+        {{formulario_at.as_table}}
+    </table>
 
     <input type="submit" value="Enviar">
 

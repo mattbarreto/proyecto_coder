@@ -1,7 +1,9 @@
 import email
 from unittest import result
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from app_proyectoFinal.models import Atleta
+from app_proyectoFinal.forms import atleta_form
 
 # Create your views here.
 
@@ -28,13 +30,22 @@ def rutina(request):
 def atletas_form(request):
 
     if request.method=='POST':
-        nombre = request.POST['nombre']
-        apellido = request.POST['apellido']
-        edad = request.POST['edad']
-        altura = request.POST['altura']
-        peso = request.POST['peso']
-        email = request.POST['email']
-        Atleta.objects.create(nombre=nombre, apellido=apellido, edad=edad, altura=altura, peso=peso, email=email)
-        return redirect('Atletas')
+        formulario_atletas = atleta_form(request.POST)
+        
+        if formulario_atletas.is_valid():
+            data = formulario_atletas.cleaned_data
+            Atleta.objects.create(nombre=data['nombre'], apellido=data['apellido'], edad=data['edad'], altura=data['altura'], peso=data['peso'], email=data['email'])
+            return redirect('Atletas')
+    else:
+        formulario_atletas = atleta_form()
 
-    return render(request, 'atletas_form.html')
+    return render(request, 'atletas_form.html', {'formulario_at': formulario_atletas})
+
+def busqueda_atletas(request):
+
+    return render('atletas_busqueda.html')
+
+def buscar(request):
+
+    respuesta = f"Estoy buscando al atleta llamadx:{request.GET['nombre']}{request.GET['apellido']}"
+    return HttpResponse(respuesta)
