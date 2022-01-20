@@ -1,10 +1,18 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+    <h1>Los atletas cargados hasta el momento son:</h1>
+
+{% endblock %}
+
 {% block contenido %}
 
-<h1>Los atletas cargados hasta el momento son:</h1>
+{% for atleta in lista_atletas %}
 
-{% for atleta in Atleta %}
-
-    {{Atleta}}
+    {{atleta}}
     <br>
 
 {% endfor %}

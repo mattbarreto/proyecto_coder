@@ -13,7 +13,7 @@ def inicio(request):
 def atleta(request):
 
     return render(request, 'atletas.html',
-    {'atleta': Atleta.objects.all()})
+    {'lista_atletas': Atleta.objects.all()})
 
 
 def entrenador(request):
