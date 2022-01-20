@@ -41,11 +41,11 @@ def atletas_form(request):
 
     return render(request, 'atletas_form.html', {'formulario_at': formulario_atletas})
 
-def busqueda_atletas(request):
+def atleta_busqueda(request):
 
-    return render('atletas_busqueda.html')
+    return render(request, 'atletas_busqueda.html')
 
 def buscar(request):
 
-    respuesta = f"Estoy buscando al atleta llamadx:{request.GET['nombre']}{request.GET['apellido']}"
+    respuesta = f"El resultado de su busqueda es: {request.GET['nombre']} {request.GET['apellido']}"
     return HttpResponse(respuesta)
