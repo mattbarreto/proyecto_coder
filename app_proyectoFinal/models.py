@@ -13,7 +13,7 @@ class Atleta(Model):
     peso= IntegerField()
     email = EmailField()
     def __str__(self):
-        return f'Atleta: {self.nombre} {self.apellido} {self.edad} {self.altura} {self.peso} {self.email}'
+        return f'Nombre y apellido: {self.nombre} {self.apellido} Edad: {self.edad} Altura: {self.altura} Peso: {self.peso} Email: {self.email}'
 
 
 
