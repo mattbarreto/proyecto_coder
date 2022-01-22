@@ -1,10 +1,18 @@
+from dataclasses import field
 import email
+from re import template
 from unittest import result
+from winreg import DeleteValue
 from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from app_proyectoFinal.models import Atleta
 from app_proyectoFinal.forms import atleta_create
+
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -89,3 +97,29 @@ def buscar(request):
 
     respuesta = f"El resultado de su busqueda es: {request.GET['nombre']} {request.GET['apellido']}"
     return HttpResponse(respuesta)
+
+class atletaListView(ListView):
+    model = Atleta
+    template_name = 'atletas.html'
+    context_object_name = 'lista_atletas'
+
+class atletaDetailView(DetailView):
+    model = Atleta
+    template_name = 'atletas_ver.html'
+
+class atletaCreateView(CreateView):
+    model = Atleta
+    success_url = reverse_lazy('Atletas')
+    fields = ['nombre', 'apellido', 'edad', 'altura', 'peso', 'email']
+    template_name = 'atletas_formulario.html'
+
+class atletaUpdateView(UpdateView):
+    model = Atleta
+    success_url = reverse_lazy('Atletas')
+    fields = ['nombre', 'apellido', 'edad', 'altura', 'peso', 'email']
+    template_name = 'atletas_formulario.html'
+
+class atletaDeleteView(DeleteView):
+    model = Atleta
+    success_url = reverse_lazy('Atletas')
+    template_name = 'atletas_confirm_delete.html'
