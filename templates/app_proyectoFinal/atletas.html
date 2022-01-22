@@ -13,6 +13,8 @@
 {% for atleta in lista_atletas %}
 
     {{atleta}}
+    <a href="{% url 'Actualizar Atletas' atleta.id %}">Actualizar Datos</a>
+    <a href="{% url 'Borrar Atletas' atleta.id %}">Borrar</a>
     <br>
 
 {% endfor %}
