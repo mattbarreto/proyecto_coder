@@ -109,23 +109,6 @@ def atletas_ls(request):
         respuesta = 'No enviaste datos'
         return HttpResponse(respuesta)
 
-
-    # if apellido_atleta:
-        
-    #     atleta = Atleta.objects.filter(apellido=apellido_atleta)
-
-    #     return render(request, 'atletas_search.html', {
-    #     'apellido': apellido_atleta,
-    #     'nombre': atleta,
-    #     })
-
-    # else:
-
-    #     respuesta = 'No enviaste datos'
-    #     return HttpResponse(respuesta)
-
-    # return HttpResponse (f"Usted ha buscado al atleta {request.GET['apellido']}")
-
 class atletaListView(ListView):
     model = Atleta
     template_name = 'atletas.html'
