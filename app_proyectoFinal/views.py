@@ -1,11 +1,13 @@
 from dataclasses import field
 import email
-from re import template
+from mailbox import NoSuchMailboxError
+from re import A, template
 from unittest import result
 from winreg import DeleteValue
 from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.db.models import Q 
 from app_proyectoFinal.models import Atleta
 from app_proyectoFinal.forms import atleta_create
 
@@ -93,10 +95,36 @@ def atleta_busqueda(request):
 
     return render(request, 'atletas_busqueda.html')
 
-def buscar(request):
+def atletas_ls(request):
+    
+    if request.GET['apellido']:
+        
+        apellido_buscado = request.GET['apellido']
+        apellido_atleta = Atleta.objects.filter(apellido__icontains=apellido_buscado)
 
-    respuesta = f"El resultado de su busqueda es: {request.GET['nombre']} {request.GET['apellido']}"
-    return HttpResponse(respuesta)
+        return render(request, 'atletas_resultados_ls.html', {'apellido_atleta': apellido_atleta, 'query': apellido_buscado})
+
+    else:
+
+        respuesta = 'No enviaste datos'
+        return HttpResponse(respuesta)
+
+
+    # if apellido_atleta:
+        
+    #     atleta = Atleta.objects.filter(apellido=apellido_atleta)
+
+    #     return render(request, 'atletas_search.html', {
+    #     'apellido': apellido_atleta,
+    #     'nombre': atleta,
+    #     })
+
+    # else:
+
+    #     respuesta = 'No enviaste datos'
+    #     return HttpResponse(respuesta)
+
+    # return HttpResponse (f"Usted ha buscado al atleta {request.GET['apellido']}")
 
 class atletaListView(ListView):
     model = Atleta
