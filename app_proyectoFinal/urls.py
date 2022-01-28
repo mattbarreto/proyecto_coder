@@ -15,5 +15,17 @@ urlpatterns = [
     path('atletas/delete/<pk>', atletaDeleteView.as_view(), name='Borrar Atletas'),
     path('atletas/buscar', atleta_busqueda, name='Busqueda de Atletas'),
     path('atletas/listar_busqueda', atletas_ls, name='Search'),
-    path('entrenadores', entrenador, name='Entrenadores'),
+    # ENTRENADORES
+    path('entrenadores', EntrenadoresListViews.as_view(), name='Entrenadores'),
+    path('entrenadores_add', EntrenadoresCreateView.as_view(), name='Entrenadores_formulario'),
+    path('entrenadores/update/<pk>', EntrenadoresUpdateView.as_view(), name='actualizar Entrenadores'),
+    path('entrenadores/view/<pk>', EntrenadoresDetailView.as_view(), name='Entrenadores_view'),
+    # RUTINAS
+    path('rutinas', RutinasListView.as_view(), name='Rutinas'),
+    path('rutinas/detalle/<pk>', RutinasDetailView.as_view(), name='Detalle de Rutinas'),
+    path('rutinas/add', RutinasCreateView.as_view(), name='Formulario de Rutinas'),
+    path('rutinas/update/<pk>', RutinasUpdateView.as_view(), name='Actualizar Rutinas'),
+    path('rutinas/delete/<pk>', RutinasDeleteView.as_view(), name='Borrar Rutinas'),
+    path('rutinas/buscar', rutinas_busqueda, name='Busqueda de Rutinas'),
+    path('buscar_rutina', buscar_rutina, name='Buscar Rutinas'),
 ]
