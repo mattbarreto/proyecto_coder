@@ -1,25 +1,19 @@
 # proyecto_coder
 
-En la version actual del desarrollo, la aplicacion cuenta con 5 ramas:
+En la version actual del desarrollo, la aplicacion cuenta con 2 ramas:
             
             - master
-            - modelsClassTest
-            - atletas 
-            - trainer
-            - training
+            - newProject
 
 - master: archivos y bases de datos base del proyecto
-- modelsClassTest: testeos en base a actualizaciones de modelos
-- atletas: desarrollo especifico de base de datos referidas a Entrenadores
-- trainer: desarrollo especifico de base de datos referidas a Entrenadores
-- training: desarrollo especifico de base de datos referidas a Entrenadores 
+- newProject: unificacion de antiguos modelos trabajados en ramas separadas: Atleta, Entrenador y Entrenamiento funcionan en un mismo proyecto y misma aplicación.
 
 Para ingresar a la aplicacion /app
 
-Alli se encontrara el prototipo o minimo funcional viable con funcionalidades basicas referedidas a la categoria atleta. Para acceder al resto de funcionalidades se deben seguir los siguientes pasos:
+Alli se encontrara el prototipo o minimo funcional viable con funcionalidades basicas referedidas a la categoria atleta, entrenador y training. Para acceder al resto de funcionalidades se deben seguir los siguientes pasos:
 
 Ejecute su entorno de programacion.
-En consola o terminal ejecute git branch trainer, por ejemplo.
+En consola o terminal ejecute git branch newProject, por ejemplo.
 En consola o terminal escriba python manage.py runserver (debe estar situado en la carpeta que contiene el archivo denominado manage.py)
 Espere las instrucciones de la terminal. Alli debera seguir el link que le sea indicado para hacer correr la aplicacion en su navegador. 
 
